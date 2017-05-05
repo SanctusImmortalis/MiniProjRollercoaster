@@ -32,7 +32,7 @@ void Passageiro::entraNoCarro() {
 
 	while((ticket > Passageiro::nextToEnter) || (carro.getEstado()!=0) || (carro.getNumPassageiros() >= carro.getCapacidade())) ;
 
-	std::cerr << "O passageiro de id " << this->numero << " entrou no carro com ficha " << this->ticket << std::endl;
+	fprintf(stderr, "O passageiro de id %d entrou no carro com ficha %d\n", this->numero, this->ticket);
 	carro.entradaNoCarro();
 
 	Passageiro::nextToEnter++;
@@ -41,7 +41,7 @@ void Passageiro::entraNoCarro() {
 void Passageiro::esperaVoltaAcabar() {
 	while(carro.getEstado()!=2) ;
 
-	std::cerr << "Passageiro " << numero << " espera a volta acabar." << std::endl;
+	fprintf(stderr, "Passageiro %d espera a volta acabar\n", numero);
 }
 
 void Passageiro::saiDoCarro() {
@@ -49,7 +49,7 @@ void Passageiro::saiDoCarro() {
 
   while(ticket > Passageiro::nextOut) ;
 
-	std::cerr << "O passageiro " <<numero<< " saiu do carro." << std::endl;
+	fprintf(stderr, "O passageiro %d saiu do carro\n", numero);
   carro.saidaDoCarro();
 
   Passageiro::nextOut++;
@@ -58,7 +58,7 @@ void Passageiro::saiDoCarro() {
 void Passageiro::passeiaPeloParque() {
 	int n = rand() % 30;
 
-	std::cerr << "O passageiro de id " << this->numero << " vai passear por " << n << " segundos." << std::endl;
+	fprintf(stderr, "O passageiro %d vai passear por %d segundos\n", numero, n);
 
 	sleep(n);
 }

@@ -22,7 +22,7 @@ Carro::~Carro() {
 }
 
 void Carro::esperaEncher() {
-	std::cerr << "Esperando carro encher." << std::endl;
+	fprintf(stderr, "Esperando carro encher.\n");
 
   while(this->nPassageiros < Carro::capacidade){
     if(parque.getNumPassageiros() < Carro::capacidade)
@@ -33,25 +33,25 @@ void Carro::esperaEncher() {
 
 	this->estado = 1;
 
-	std::cerr << "Carro cheio. Comecando volta." << std::endl;
+	fprintf(stderr, "Carro cheio. Comecando volta.\n");
 }
 
 void Carro::daUmaVolta() {
-	std::cerr << "Dando uma volta" << std::endl;
+	fprintf(stderr, "Dando uma volta\n");
 
 	sleep(5);
 
-	std::cerr << "A volta acabou" << std::endl;
+	fprintf(stderr, "A volta acabou\n");
 
 	this->estado = 2;
 }
 
 void Carro::esperaEsvaziar() {
-	std::cerr << "Esperando esvaziar" << std::endl;
+	fprintf(stderr, "Esperando esvaziar\n");
 
 	while(this->nPassageiros > 0) ;
 
-	std::cerr << "Carro vazio. Esperando entrada." << std::endl;
+	fprintf(stderr, "Carro vazio. Esperando entrada.\n");
 
 	this->estado = 0;
 }
@@ -96,4 +96,6 @@ void Carro::run() {
 
 		voltas++;
 	}
+
+  fprintf(stderr, "\nEl fin.\n\n");
 }
