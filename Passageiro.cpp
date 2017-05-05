@@ -28,7 +28,7 @@ Passageiro::~Passageiro() {
 void Passageiro::entraNoCarro() {
 	this->ticket = Sincronizador::FetchAndAdd(Passageiro::currentTicket, 1);
 
-	while((ticket < Passageiro::nextToEnter) || (carro.getEstado()!=0) || (carro.getNumPassageiros() >= carro.getCapacidade())) ;
+	while((ticket > Passageiro::nextToEnter) || (carro.getEstado()!=0) || (carro.getNumPassageiros() >= carro.getCapacidade())) ;
 
 	std::cerr << "O passageiro de id " << this->numero << " entrou no carro com ficha " << this->ticket << std::endl;
 	carro.entradaNoCarro();

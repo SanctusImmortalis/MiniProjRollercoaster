@@ -24,7 +24,10 @@ Carro::~Carro() {
 void Carro::esperaEncher() {
 	std::cerr << "Esperando carro encher." << std::endl;
 
-	while(this->nPassageiros < Carro::capacidade) ;
+  while(this->nPassageiros < Carro::capacidade){
+    if(parque.getNumPassageiros() < Carro::capacidade)
+      Carro::capacidade = parque.getNumPassageiros();
+  }
 
 	this->estado = 1;
 
