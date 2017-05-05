@@ -29,6 +29,8 @@ private:
 
 	static int currentTicket;
 	static int nextToEnter;
+	static int stepOut;
+	static int nextOut;
 	static int saidaDoParque;
 	static int nextToLeave;
 };

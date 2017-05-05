@@ -16,6 +16,8 @@
 
 int Passageiro::currentTicket = 1;
 int Passageiro::nextToEnter = 1; //Proximo a entrar no carro
+int Passageiro::stepOut = 1;
+int Passageiro::nextOut = 1; //Proximo a sair do carro
 int Passageiro::saidaDoParque = 1;
 int Passageiro::nextToLeave = 1; //Proximo a sair do parque
 
@@ -43,9 +45,14 @@ void Passageiro::esperaVoltaAcabar() {
 }
 
 void Passageiro::saiDoCarro() {
-	carro.saidaDoCarro();
+  this->ticket = Sincronizador::FetchAndAdd(Passageiro::stepOut, 1);
+
+  while(ticket > Passageiro::nextOut) ;
 
 	std::cerr << "O passageiro " <<numero<< " saiu do carro." << std::endl;
+  carro.saidaDoCarro();
+
+  Passageiro::nextOut++;
 }
 
 void Passageiro::passeiaPeloParque() {
