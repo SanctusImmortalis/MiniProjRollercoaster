@@ -10,7 +10,7 @@
 
 #include "include/Carro.h"
 
-int Carro::capacidade = 0;
+int Carro::capacidade = 1;
 
 Carro::Carro(Parque &p) : parque(p), estado(0) {
 	this->voltas = 0;
@@ -28,6 +28,8 @@ void Carro::esperaEncher() {
     if(parque.getNumPassageiros() < Carro::capacidade)
       Carro::capacidade = parque.getNumPassageiros();
   }
+
+  	if(!Carro::capacidade) return;
 
 	this->estado = 1;
 
@@ -85,6 +87,8 @@ Parque &Carro::getParque() {
 void Carro::run() {
 	while (parque.getNumPassageiros() > 0) {
 		esperaEncher();
+
+		if(!Carro::capacidade) break;
 
 		daUmaVolta();
 
