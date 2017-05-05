@@ -19,6 +19,11 @@ public:
 	void daUmaVolta();
 	void esperaEsvaziar();
 	int getNVoltas();
+	int getNumPassageiros();
+	void entradaNoCarro();
+	void saidaDoCarro();
+	int getCapacidade();
+	char getEstado();
 	Parque &getParque();
 
 	void run();
